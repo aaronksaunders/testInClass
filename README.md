@@ -14,6 +14,8 @@
 
 #####[Available On Amazon.com](http://www.amazon.com/Building-Cross-Platform-Titanium-Appcelerator-Services/dp/1118673255)
 ____
+Link to presentation on Slideshare.net - http://www.slideshare.net/aaronksaunders/howard-class-day12
+____
 ###Getting Started
 Please setup your constants by modifying the file [`tiapp.xml`](tiapp.xml) in the `root` directory of your project
 
