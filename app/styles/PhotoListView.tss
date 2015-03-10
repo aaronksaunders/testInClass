@@ -1,0 +1,38 @@
+"Window": {
+	backgroundColor: "#fff"
+}
+"#thumbImage": {
+	left: '10dp',
+	width: '84dp',
+	height: '84dp'
+},
+"#fileName": {
+	left: '5dp',
+	font: {
+		fontSize: '18dp',
+		fontFamily: 'Helvetica Neue'
+	}
+}
+"#dateCreated": {
+	left: '5dp',
+	color: 'gray',
+	font: {
+		fontSize: '12dp',
+		fontFamily: 'Helvetica Neue'
+	}
+}
+"#templateWrapper": {
+	top : '5dp',
+	layout: 'horizontal',
+	height: Ti.UI.SIZE,
+	right : '2dp'
+}
+"#textWrapper": {
+	layout: 'vertical',
+	left: '10dp',
+	height: Ti.UI.SIZE,
+	width: Ti.UI.SIZE
+}
+"#listView[android]": {
+	separatorColor : 'gray',
+}
