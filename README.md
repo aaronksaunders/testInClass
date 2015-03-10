@@ -1,7 +1,12 @@
 ##Second Sample Appcelerator Alloy Mobile Project for Howard U SCS Cross-Platform Mobile App Dev Class
 
 * Project is based off of the default 2 Tab template available in Titanium Studio.
-* Project is a sample demonstrating the use of Titatium ListView, Appcelerator Cloud Service `ti.cloud` module `moment.js` and `q` for promises
+* Project is a sample demonstrating the use of the following features
+  * Titatium ListView
+  * Titanium Camera & Photo Gallery Integration
+  * Appcelerator Cloud Service `ti.cloud` module, User and Photo Objects covered
+  * Date and Time manipulation using `moment.js`
+  * Javascript library`q` for promises integration
 * This code should run successfully on IOS and Android using the Appcelerator 3.5.0 SDK
 * Concepts here are meant to be a introductory guide to concepts covered in my book on Appcelerator Alloy and Appcelerator Cloud Services
 
