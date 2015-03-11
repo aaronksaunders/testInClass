@@ -1,12 +1,13 @@
 <Alloy>
-	<TabGroup>
+	<TabGroup>		
+		<!-- the tabs -->
 		<Tab title="Tab 1" icon="KS_nav_ui.png">
 			<Window title="Tab 1" layout="vertical">
 				<Label>I am Window One</Label>
 				<Button title="Click To Take Photo" onClick="takePhoto" top="20dp"></Button>
 			</Window>
 		</Tab>
-        <!-- Tab included via <Require> tag for PhotoListView -->
-        <Require src="PhotoListView" id="photoListView"/>
+		<!-- Tab included via <Require> tag for PhotoListView -->
+		<Require src="PhotoListView" id="photoListView"/>
 	</TabGroup>
 </Alloy>

@@ -20,6 +20,8 @@ var Cloud = require('ti.cloud');
 // using for time formatting - http://momentjs.com/
 var moment = require('moment');
 
+var utils = require('utilities');
+
 Ti.API.info('Loaded PhotoListView Controller');
 
 /**
@@ -29,13 +31,17 @@ Ti.API.info('Loaded PhotoListView Controller');
 $.loadImages = function loadImages() {
 	Ti.API.info('PhotoListView Controller: loadImages');
 
+	utils.showIndicator();
+
 	// call ACS to get current List of photos
 	getPhotosFromACS().then(function(_photos) {
 		Ti.API.info(JSON.stringify(_photos, null, 2));
 
 		// add photos to UI
-		addPhotosToTableView(_photos);
+		addPhotosToListView(_photos);
 
+	}).finally(function() {
+		utils.hideIndicator();
 	}, function(_error) {
 		alert('Error:\n' + ((_error.error && _error.message) || JSON.stringify(_error)));
 	});
@@ -65,7 +71,10 @@ function getPhotosFromACS() {
 /**
  *
  */
-function addPhotosToTableView(_photos) {
+function addPhotosToListView(_photos) {
+
+	// empty the list out
+	$.listViewSection.deleteItemsAt(0, $.listViewSection.items.length);
 
 	for (var i = _photos.length - 1; i >= 0; i--) {
 
@@ -86,7 +95,7 @@ function addPhotosToTableView(_photos) {
 			},
 			template : 'listViewTemplate',
 			thumbImage : {
-				image : _photos[i].urls.small_240
+				image : _photos[i].urls.small_240 || _photos[i].urls.hd
 			}
 		};
 
