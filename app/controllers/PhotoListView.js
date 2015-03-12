@@ -27,8 +27,11 @@ Ti.API.info('Loaded PhotoListView Controller');
 /**
  * a public function for loading the images from ACS into a view for
  * the purpose of demonstrating ListViews and ListViewTemplates
+ *
+ * @param {Function} _callback - used with pull to refresh to  restore
+ * screen when data is done loading
  */
-$.loadImages = function loadImages() {
+$.loadImages = function loadImages(_callback) {
 	Ti.API.info('PhotoListView Controller: loadImages');
 
 	utils.showIndicator();
@@ -42,6 +45,11 @@ $.loadImages = function loadImages() {
 
 	}).finally(function() {
 		utils.hideIndicator();
+
+		// indicate we are finished loading, used by
+		// refreshed
+		_callback && _callback();
+
 	}, function(_error) {
 		alert('Error:\n' + ((_error.error && _error.message) || JSON.stringify(_error)));
 	});
@@ -95,10 +103,21 @@ function addPhotosToListView(_photos) {
 			},
 			template : 'listViewTemplate',
 			thumbImage : {
-				image : _photos[i].urls.small_240 || _photos[i].urls.hd
+				image : _photos[i].urls.small_240 || _photos[i].urls.preview
 			}
 		};
 
 		$.listViewSection.appendItems([listItem]);
 	}
+}
+
+/**
+ * called when user pulls down on list
+ *
+ * @param {Object} _event
+ */
+function refreshData(_event) {
+	$.loadImages(function() {
+		_event.hide();
+	});
 }

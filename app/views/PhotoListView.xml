@@ -9,34 +9,37 @@
 		in the appropriate .tss file
 		-->
 		<Window id="photoListWindow"  title="PhotoList" class='container'>
-			<!--
-			this is the listView which is an alternative to the tableView.
-			it performs much better and is the recommended approach for
-			building applications
-			-->
-			<ListView id="listView">
-				<Templates>
-					<!--
-					templates are how the data is rendered in the ListView, the list can
-					support multiple templates and the template is specified when the
-					data is set in the controller.
-					-->
-					<ItemTemplate name="listViewTemplate" height='100dp'>
-						<View id="templateWrapper">
-							<ImageView bindId="thumbImage" id="thumbImage"/>
-							<View id="textWrapper">
-								<Label bindId="fileName" id="fileName"/>
-								<Label bindId="dateCreated" id="dateCreated"/>
-							</View>
-						</View>
-					</ItemTemplate>
-				</Templates>
+			<!-- specify widget id and the function to call to update the data -->
+			<Widget id="pullToRefresh" src="nl.fokkezb.pullToRefresh" onRelease="refreshData">
 				<!--
-				the data, based on the templates are rendered in sections, this app
-				only has one section, but can support multiple sections
+				this is the listView which is an alternative to the tableView.
+				it performs much better and is the recommended approach for
+				building applications
 				-->
-				<ListSection id="listViewSection" />
-			</ListView>
+				<ListView id="listView">
+					<Templates>
+						<!--
+						templates are how the data is rendered in the ListView, the list can
+						support multiple templates and the template is specified when the
+						data is set in the controller.
+						-->
+						<ItemTemplate name="listViewTemplate" height='100dp'>
+							<View id="templateWrapper">
+								<ImageView bindId="thumbImage" id="thumbImage"/>
+								<View id="textWrapper">
+									<Label bindId="fileName" id="fileName"/>
+									<Label bindId="dateCreated" id="dateCreated"/>
+								</View>
+							</View>
+						</ItemTemplate>
+					</Templates>
+					<!--
+					the data, based on the templates are rendered in sections, this app
+					only has one section, but can support multiple sections
+					-->
+					<ListSection id="listViewSection" />
+				</ListView>
+			</Widget>
 		</Window>
 	</Tab>
 </Alloy>
