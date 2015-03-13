@@ -121,3 +121,24 @@ function refreshData(_event) {
 		_event.hide();
 	});
 }
+
+function listItemClicked(_event) {
+
+	var currentItem = $.listViewSection.getItemAt(_event.itemIndex);
+	var selectedObject = currentItem.properties.photoObject;
+
+	// log for debugging purposes and convert object to
+	// string that is readable
+	console.log("selectedObject " + JSON.stringify(selectedObject, null, 2));
+
+	// create the new controller and pass in the
+	// model object as an argument 'item'
+	var ctrl = Alloy.createController('PhotoDetail', {
+		'item' : selectedObject,
+		'photoListTab' : $.photoListTab
+	});
+
+	setTimeout(function() {
+		$.photoListTab.open(ctrl.detailWindow);
+	}, 200);
+}

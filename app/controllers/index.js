@@ -7,6 +7,9 @@ var Cloud = require('ti.cloud');
 
 var utils = require('utilities');
 
+// load up the map
+Alloy.Globals.Map = require('ti.map');
+
 /**
  * function to log user into the system. Be sure to create the user in the admin console
  * first - https://my.appcelerator.com/apps

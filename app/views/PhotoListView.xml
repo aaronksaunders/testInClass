@@ -16,7 +16,7 @@
 				it performs much better and is the recommended approach for
 				building applications
 				-->
-				<ListView id="listView">
+				<ListView id="listView" onItemclick="listItemClicked">
 					<Templates>
 						<!--
 						templates are how the data is rendered in the ListView, the list can
