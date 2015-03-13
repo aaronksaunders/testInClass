@@ -10,6 +10,10 @@ var utils = require('utilities');
 // load up the map
 Alloy.Globals.Map = require('ti.map');
 
+var ImageFactory = require('ti.imagefactory');
+
+Ti.API.info('ImageFactory ' + ImageFactory);
+
 /**
  * function to log user into the system. Be sure to create the user in the admin console
  * first - https://my.appcelerator.com/apps
@@ -104,10 +108,28 @@ function takePhoto() {
  */
 function savePhoto(_imageData, _locationInformation) {
 
-	utils.showindicator();
+	//utils.showindicator();
+
+	// compress image for better uploading
+
+	var imageCompressed;
+
+	if (OS_ANDROID || _imageData.width > 700) {
+		var w,
+		    h;
+		w = _imageData.width * .50;
+		h = _imageData.height * .50;
+		imageCompressed = ImageFactory.imageAsResized(_imageData, {
+			width : w,
+			height : h
+		});
+	} else {
+		// we do not need to compress here
+		imageCompressed = _imageData;
+	}
 
 	var photoParameters = {
-		photo : _imageData,
+		photo : imageCompressed,
 		// set some sizes for the photos
 		"photo_sizes[preview]" : "200x200#",
 		"photo_sizes[normal]" : "320x320#",
@@ -131,7 +153,7 @@ function savePhoto(_imageData, _locationInformation) {
 		if (e.success) {
 			var photo = e.photos[0];
 
-			utils.hideIndicator();
+			//utils.hideIndicator();
 
 			alert('Success: filename: ' + photo.filename + '\n' + 'size: ' + photo.size, 'updated_at: ' + photo.updated_at);
 
@@ -139,7 +161,7 @@ function savePhoto(_imageData, _locationInformation) {
 			// photos in the photoListView
 			$.photoListView.loadImages();
 		} else {
-			utils.hideIndicator();
+			//utils.hideIndicator();
 			alert('Error:\n' + ((e.error && e.message) || JSON.stringify(e)));
 		}
 	});

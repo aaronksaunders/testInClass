@@ -1,5 +1,8 @@
 var args = arguments[0] || {};
 
+/* map clicked */
+$.mapview.addEventListener('click', mapAnnotationClicked);
+
 
 // get the photo object from the parameters
 var coords = args.item.custom_fields.coordinates[0];
@@ -9,7 +12,7 @@ var locationString = args.item.custom_fields.location_address;
 var annotation = Alloy.Globals.Map.createAnnotation({
   latitude : Number(coords[1]),
   longitude : Number(coords[0]),
-  title : args.item.custom_fields.locationString,
+  title : args.item.custom_fields.location_string,
   myid : args.item.id
 });
 
@@ -20,12 +23,9 @@ $.mapview.setAnnotations([annotation]);
 $.mapview.setRegion({
   latitude : annotation.latitude,
   longitude : annotation.longitude,
-  latitudeDelta : 0.040,
-  longitudeDelta : 0.040
+  latitudeDelta : 0.010,
+  longitudeDelta : 0.010
 });
-
-/* map clicked */
-$.mapview.addEventListener('click', mapAnnotationClicked);
 
 
 function mapAnnotationClicked(_event) {
@@ -44,7 +44,7 @@ function mapAnnotationClicked(_event) {
 
   if (showDetails) {
 
-
+    Ti.API.info('clickSource ' + clickSource);
   } else {
     Ti.API.info('clickSource ' + clickSource);
   }

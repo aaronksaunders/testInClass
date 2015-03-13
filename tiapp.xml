@@ -13,7 +13,7 @@
     <analytics>false</analytics>
     <guid>9f89f107-63a9-443e-851b-7711a1a2640f</guid>
     <property name="ti.ui.defaultunit" type="string">dp</property>
-    <property name="acs-api-key-development" type="string">HzglgNio7nxobLpXOi9tLmUg1MSF2hN2</property>
+    <property name="acs-api-key-development" type="string"></property>
     <ios>
         <plist>
             <dict>
@@ -57,12 +57,12 @@
         <theme>default</theme>
     </mobileweb>
     <modules>
-    <module platform="commonjs">ti.cloud</module>
-    <module platform="iphone">ti.map</module>
-    <module platform="android">ti.map</module>
-    <module platform="android" version="2.2.1">ti.imagefactory</module>
-    <module platform="iphone" version="1.2.0">ti.imagefactory</module>
-  </modules>
+        <module platform="commonjs">ti.cloud</module>
+        <module platform="iphone">ti.map</module>
+        <module platform="android">ti.map</module>
+        <module platform="iphone">ti.imagefactory</module>
+        <module platform="android">ti.imagefactory</module>
+    </modules>
     <deployment-targets>
         <target device="android">true</target>
         <target device="blackberry">false</target>

@@ -16,7 +16,7 @@
 		fontFamily: 'Helvetica Neue'
 	}
 }
-"#imageView": {
+"#imageViewWrapper": {
 	width: '100%',
 	height: Ti.UI.FILL
 }

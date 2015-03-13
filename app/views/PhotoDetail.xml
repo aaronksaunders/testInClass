@@ -5,7 +5,9 @@
 		platform="android"/>
 		<View class="wrapper">
 			<Label id="locationInfo" onClick="showMap"></Label>
-			<ImageView id="imageView"></ImageView>
+			<View id='imageViewWrapper'>
+				<ImageView id="imageView"></ImageView>
+			</View>
 		</View>
 	</Window>
 </Alloy>
