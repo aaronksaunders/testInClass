@@ -19,7 +19,9 @@ ____
 ###Getting Started
 Please setup your constants by modifying the file [`tiapp.xml`](tiapp.xml) in the `root` directory of your project
 
-Modify the code below to use your values from the Appcelerator Cloud Services console. The information can be found at http://my.appcelerator.com. If you are starting with a new project you created in Appcelerator Studio, you can cloud enable the application at creation and skip this step
+Modify the code below to use your values from the Appcelerator Cloud Services console. The information can be found at http://my.appcelerator.com. If you are starting with a new project you created in Appcelerator Studio, you can cloud enable the application at creation and skip this step.
+
+Be sure to used the development key. Note that if you are starting your project from scratch, this step is not needed if you have cloud enabled your application
 
 ````Javascript
 <property name="acs-api-key-development" type="string">YOR VALUE HERE</property>
