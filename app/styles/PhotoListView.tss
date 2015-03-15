@@ -33,6 +33,6 @@
 	height: Ti.UI.SIZE,
 	width: Ti.UI.SIZE
 }
-"#listView[android]": {
+"#listView[Android]": {
 	separatorColor : 'gray',
 }

@@ -1,0 +1,13 @@
+<Alloy>
+	<Window class="container" id="detailWindow">
+		<ActionBar displayHomeAsUp="true"
+		onHomeIconItemSelected="closeWindow"
+		platform="android"/>
+		<View class="wrapper">
+			<Label id="locationInfo" onClick="showMap"></Label>
+			<View id='imageViewWrapper'>
+				<ImageView id="imageView"></ImageView>
+			</View>
+		</View>
+	</Window>
+</Alloy>

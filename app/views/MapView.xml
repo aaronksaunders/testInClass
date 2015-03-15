@@ -1,0 +1,5 @@
+<Alloy>
+	<Window id="mainWindow" title="Location Detail">
+		<View ns="Alloy.Globals.Map" id="mapview" ></View>
+	</Window>
+</Alloy>

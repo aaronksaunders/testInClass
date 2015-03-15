@@ -20,21 +20,35 @@ var Cloud = require('ti.cloud');
 // using for time formatting - http://momentjs.com/
 var moment = require('moment');
 
+var utils = require('utilities');
+
 Ti.API.info('Loaded PhotoListView Controller');
 
 /**
  * a public function for loading the images from ACS into a view for
  * the purpose of demonstrating ListViews and ListViewTemplates
+ *
+ * @param {Function} _callback - used with pull to refresh to  restore
+ * screen when data is done loading
  */
-$.loadImages = function loadImages() {
+$.loadImages = function loadImages(_callback) {
 	Ti.API.info('PhotoListView Controller: loadImages');
+
+	utils.showIndicator();
 
 	// call ACS to get current List of photos
 	getPhotosFromACS().then(function(_photos) {
 		Ti.API.info(JSON.stringify(_photos, null, 2));
 
 		// add photos to UI
-		addPhotosToTableView(_photos);
+		addPhotosToListView(_photos);
+
+	}).finally(function() {
+		utils.hideIndicator();
+
+		// indicate we are finished loading, used by
+		// refreshed
+		_callback && _callback();
 
 	}, function(_error) {
 		alert('Error:\n' + ((_error.error && _error.message) || JSON.stringify(_error)));
@@ -65,7 +79,10 @@ function getPhotosFromACS() {
 /**
  *
  */
-function addPhotosToTableView(_photos) {
+function addPhotosToListView(_photos) {
+
+	// empty the list out
+	$.listViewSection.deleteItemsAt(0, $.listViewSection.items.length);
 
 	for (var i = _photos.length - 1; i >= 0; i--) {
 
@@ -86,10 +103,42 @@ function addPhotosToTableView(_photos) {
 			},
 			template : 'listViewTemplate',
 			thumbImage : {
-				image : _photos[i].urls.small_240
+				image : _photos[i].urls.small_240 || _photos[i].urls.preview
 			}
 		};
 
 		$.listViewSection.appendItems([listItem]);
 	}
+}
+
+/**
+ * called when user pulls down on list
+ *
+ * @param {Object} _event
+ */
+function refreshData(_event) {
+	$.loadImages(function() {
+		_event.hide();
+	});
+}
+
+function listItemClicked(_event) {
+
+	var currentItem = $.listViewSection.getItemAt(_event.itemIndex);
+	var selectedObject = currentItem.properties.photoObject;
+
+	// log for debugging purposes and convert object to
+	// string that is readable
+	console.log("selectedObject " + JSON.stringify(selectedObject, null, 2));
+
+	// create the new controller and pass in the
+	// model object as an argument 'item'
+	var ctrl = Alloy.createController('PhotoDetail', {
+		'item' : selectedObject,
+		'photoListTab' : $.photoListTab
+	});
+
+	setTimeout(function() {
+		$.photoListTab.open(ctrl.detailWindow);
+	}, 200);
 }
