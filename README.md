@@ -1,3 +1,5 @@
+[![Appcelerator Titanium](http://www-static.appcelerator.com/badges/titanium-git-badge-sq.png)](http://appcelerator.com/titanium/) [![Appcelerator Alloy](http://www-static.appcelerator.com/badges/alloy-git-badge-sq.png)](http://appcelerator.com/alloy/)
+
 ##Second Sample Appcelerator Alloy Mobile Project for Howard U SCS Cross-Platform Mobile App Dev Class
 
 * Project is based off of the default 2 Tab template available in Titanium Studio.
@@ -15,6 +17,10 @@
 #####[Available On Amazon.com](http://www.amazon.com/Building-Cross-Platform-Titanium-Appcelerator-Services/dp/1118673255)
 ____
 Link to presentation on Slideshare.net - http://www.slideshare.net/aaronksaunders/howard-class-day12
+____
+#### Videos
+Appcelerator Alloy Simple TableView Mobile App: https://youtu.be/Sz_V5HAqroU via @YouTube
+Intro To Titanium Studio and Your First Appcelerator Alloy HelloWorld App: https://youtu.be/EBFbkM5eM6w via @YouTube
 ____
 ###Getting Started
 Please setup your constants by modifying the file [`tiapp.xml`](tiapp.xml) in the `root` directory of your project
