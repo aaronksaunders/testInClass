@@ -20,3 +20,6 @@
 	width: '100%',
 	height: Ti.UI.FILL
 }
+"#imageView": {
+	hires : true,
+},
