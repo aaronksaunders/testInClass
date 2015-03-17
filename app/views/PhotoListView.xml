@@ -25,7 +25,9 @@
 						-->
 						<ItemTemplate name="listViewTemplate" height='100dp'>
 							<View id="templateWrapper">
+								<View class="imageViewWrapper">
 								<ImageView bindId="thumbImage" id="thumbImage"/>
+								</View>
 								<View id="textWrapper">
 									<Label bindId="fileName" id="fileName"/>
 									<Label bindId="dateCreated" id="dateCreated"/>

@@ -2,9 +2,7 @@
 	backgroundColor: "#fff"
 }
 "#thumbImage": {
-	left: '10dp',
-	width: '84dp',
-	height: '84dp'
+	hires : true,
 },
 "#fileName": {
 	left: '5dp',
@@ -35,4 +33,9 @@
 }
 "#listView[Android]": {
 	separatorColor : 'gray',
+}
+".imageViewWrapper": {
+	left: '10dp',
+	width: '84dp',
+	height: '84dp'
 }
