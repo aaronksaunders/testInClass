@@ -21,6 +21,7 @@ var Cloud = require('ti.cloud');
 var moment = require('moment');
 
 var utils = require('utilities');
+var activityIndicator = require('activityIndicator');
 
 Ti.API.info('Loaded PhotoListView Controller');
 
@@ -34,7 +35,7 @@ Ti.API.info('Loaded PhotoListView Controller');
 $.loadImages = function loadImages(_callback) {
 	Ti.API.info('PhotoListView Controller: loadImages');
 
-	utils.showIndicator();
+	activityIndicator.showIndicator();
 
 	// call ACS to get current List of photos
 	getPhotosFromACS().then(function(_photos) {
@@ -44,7 +45,7 @@ $.loadImages = function loadImages(_callback) {
 		addPhotosToListView(_photos);
 
 	}).finally(function() {
-		utils.hideIndicator();
+		activityIndicator.hideIndicator();
 
 		// indicate we are finished loading, used by
 		// refreshed
@@ -122,6 +123,19 @@ function refreshData(_event) {
 	});
 }
 
+
+/**
+ * 
+ */
+function closeWindow() {
+	$.photoListTab.close();
+}
+
+
+/**
+ * 
+ * @param {Object} _event
+ */
 function listItemClicked(_event) {
 
 	var currentItem = $.listViewSection.getItemAt(_event.itemIndex);

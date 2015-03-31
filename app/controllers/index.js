@@ -6,6 +6,7 @@ var Q = require('q');
 var Cloud = require('ti.cloud');
 
 var utils = require('utilities');
+var activityIndicator = require('activityIndicator');
 
 // load up the map
 Alloy.Globals.Map = require('ti.map');
@@ -24,7 +25,7 @@ function login(_callback) {
 	var errorMessage;
 	var user;
 
-	utils.showIndicator();
+	activityIndicator.showIndicator();
 
 	// THIS SHOULD BE THE DEFAULT USERS YOU ALREADY CREATED FOR THE
 	// APPLICATION. Look at chapter 2, page 37 for additional information
@@ -41,7 +42,7 @@ function login(_callback) {
 			alert('Error:\n' + errorMessage);
 		}
 
-		utils.hideIndicator();
+		activityIndicator.hideIndicator();
 
 		// done processing login, return from function with new result information
 		_callback({

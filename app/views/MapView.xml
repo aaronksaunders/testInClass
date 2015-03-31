@@ -1,5 +1,8 @@
 <Alloy>
-	<Window id="mainWindow" title="Location Detail">
+	<Window id="mapWindow" title="Map Detail">
+		<ActionBar displayHomeAsUp="true"
+		onHomeIconItemSelected="closeWindow"
+		platform="android"/>
 		<View ns="Alloy.Globals.Map" id="mapview" ></View>
 	</Window>
 </Alloy>

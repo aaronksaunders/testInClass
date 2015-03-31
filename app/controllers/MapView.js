@@ -5,8 +5,17 @@ $.mapview.addEventListener('click', mapAnnotationClicked);
 
 
 // get the photo object from the parameters
-var coords = args.item.custom_fields.coordinates[0];
-var locationString = args.item.custom_fields.location_address;
+var coords = [0,0];
+
+// location information
+var locationString = "Missing Location Information";
+if (args.item.custom_fields) {
+	
+	coords = args.item.custom_fields.coordinates[0];
+	
+	locationString = args.item.custom_fields.location_address;
+} 
+
 
 // create annotation
 var annotation = Alloy.Globals.Map.createAnnotation({
@@ -26,6 +35,17 @@ $.mapview.setRegion({
   latitudeDelta : 0.010,
   longitudeDelta : 0.010
 });
+
+// free the model-view data binding resources when this
+// view-controller closes
+$.mapWindow.addEventListener("close", function() {
+	$.destroy();
+});
+
+
+function closeWindow() {
+	$.mapWindow.close();
+}
 
 
 function mapAnnotationClicked(_event) {
